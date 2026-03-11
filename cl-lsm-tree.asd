@@ -6,7 +6,7 @@
 (defsystem #:cl-lsm-tree
   :name "cl-lsm-tree"
   :version "1.0.0"
-  :author "CLPIC Project"
+  :author "Parkian Company LLC"
   :license "MIT"
   :description "Log-Structured Merge-tree key-value store in pure Common Lisp"
   :long-description "A production-ready LSM-tree storage engine implementing:
