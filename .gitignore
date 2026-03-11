@@ -1,0 +1,40 @@
+# FASL files
+*.fasl
+*.fas
+*.lib
+*.lx64fsl
+*.dx64fsl
+*.x86f
+*.sparcf
+*.err
+*.pfsl
+*.dfsl
+*.p64fsl
+*.d64fsl
+*.dx32fsl
+*.lx32fsl
+
+# ASDF cache
+~/.cache/common-lisp/
+
+# Test data directories
+lsm-test-*/
+
+# Editor backups
+*~
+\#*\#
+.\#*
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.sublime-*
+.vscode/
+
+# Coverage/profiling
+coverage/
+*.prof
