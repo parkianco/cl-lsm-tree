@@ -1,3 +1,6 @@
+;;;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
+;;;; SPDX-License-Identifier: BSD-3-Clause
+
 ;;;; memtable.lisp - In-memory sorted table with skip list
 ;;;;
 ;;;; MemTable implementation using a probabilistic skip list data structure.
