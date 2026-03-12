@@ -35,4 +35,6 @@
   :components ((:module "test"
                 :components ((:file "test-lsm"))))
   :perform (test-op (o c)
-             (uiop:symbol-call :cl-lsm-tree/test :run-tests)))
+             (let ((result (uiop:symbol-call :cl-lsm-tree/test :run-tests)))
+               (unless result
+                 (error "Tests failed")))))
