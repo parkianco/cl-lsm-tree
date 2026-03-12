@@ -78,6 +78,10 @@
     ((null a) -1)
     ((null b) 1)
     ((equal a b) 0)
+    ((and (stringp a) (stringp b))
+     (cond ((string< a b) -1)
+           ((string> a b) 1)
+           (t 0)))
     ((and (vectorp a) (vectorp b))
      (let ((len-a (length a))
            (len-b (length b)))
@@ -89,8 +93,6 @@
              finally (return (cond ((< len-a len-b) -1)
                                    ((> len-a len-b) 1)
                                    (t 0))))))
-    ((string< a b) -1)
-    ((string> a b) 1)
     (t 0)))
 
 ;;; ============================================================================
