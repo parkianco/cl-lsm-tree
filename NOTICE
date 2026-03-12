@@ -3,7 +3,6 @@ cl-lsm-tree
 
 This software was extracted from CLPIC (Common Lisp P2P Intellectual Property Chain).
 
-Original source: https://github.com/yourusername/clpic
 Extracted component: src/storage/lsm/
 
 This is a standalone, zero-dependency implementation of a Log-Structured

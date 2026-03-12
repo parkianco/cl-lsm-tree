@@ -185,4 +185,3 @@ MIT License - See LICENSE file
 
 ## Attribution
 
-Extracted from [CLPIC](https://github.com/yourusername/clpic) - Pure Common Lisp P2P Intellectual Property Chain.
