@@ -33,7 +33,7 @@
 
 (defmacro assert-equal (expected actual &optional message)
   "Assert that expected equals actual."
-  `(unless (equal ,expected ,actual)
+  `(unless (equalp ,expected ,actual)
      (error "~@[~A: ~]Expected ~S but got ~S"
             ,message ,expected ,actual)))
 
