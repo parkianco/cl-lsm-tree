@@ -22,12 +22,16 @@
 - Range scan iterators with merge semantics
 - Snapshot isolation for consistent reads"
   :serial t
-  :components ((:file "package")
+  :components ((:file "src/package")
                (:module "src"
-                :components ((:file "package")
-                             (:file "conditions" :depends-on ("package"))
+                :components ((:file "conditions" :depends-on ("package"))
                              (:file "types" :depends-on ("package"))
-                             (:file "cl-lsm-tree" :depends-on ("package" "conditions" "types"))))))
+                             (:file "util" :depends-on ("package"))
+                             (:file "memtable" :depends-on ("package" "conditions" "types" "util"))
+                             (:file "sstable" :depends-on ("package" "conditions" "types" "util"))
+                             (:file "compaction" :depends-on ("package" "conditions" "types" "util"))
+                             (:file "lsm" :depends-on ("package" "conditions" "types" "util" "memtable" "sstable" "compaction"))
+                             (:file "cl-lsm-tree" :depends-on ("package" "lsm")))))
   :in-order-to ((asdf:test-op (test-op #:cl-lsm-tree/test))))
 
 (asdf:defsystem #:cl-lsm-tree/test
