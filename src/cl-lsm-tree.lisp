@@ -104,3 +104,14 @@ Returns (values processed-results error-alist)."
 (defun flatten (l) (cond ((null l) nil) ((atom l) (list l)) (t (append (flatten (car l)) (flatten (cdr l))))))
 (defun map-keys (fn hash) (let ((res nil)) (maphash (lambda (k v) (push (funcall fn k) res)) hash) res))
 (defun now-timestamp () (get-universal-time))
+
+;;; Substantive Functional Logic
+
+(defun deep-copy-list (l)
+  "Recursively copies a nested list."
+  (if (atom l) l (cons (deep-copy-list (car l)) (deep-copy-list (cdr l)))))
+
+(defun group-by-count (list n)
+  "Groups list elements into sublists of size N."
+  (loop for i from 0 below (length list) by n
+        collect (subseq list i (min (+ i n) (length list)))))
