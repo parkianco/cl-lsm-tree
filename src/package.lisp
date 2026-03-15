@@ -34,6 +34,7 @@ SNAPSHOTS:
     (snapshot-get snap \"key\")
     (release-snapshot engine snap))")
   (:export
+   #:memoize-function
    #:deep-copy-list
    #:group-by-count
    #:identity-list

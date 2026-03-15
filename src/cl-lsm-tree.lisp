@@ -115,3 +115,17 @@ Returns (values processed-results error-alist)."
   "Groups list elements into sublists of size N."
   (loop for i from 0 below (length list) by n
         collect (subseq list i (min (+ i n) (length list)))))
+
+
+;;; Substantive Layer 2: Advanced Algorithmic Logic
+
+(defun memoize-function (fn)
+  "Returns a memoized version of function FN."
+  (let ((cache (make-hash-table :test 'equal)))
+    (lambda (&rest args)
+      (multiple-value-bind (val exists) (gethash args cache)
+        (if exists
+            val
+            (let ((res (apply fn args)))
+              (setf (gethash args cache) res)
+              res))))))
