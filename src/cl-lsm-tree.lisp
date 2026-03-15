@@ -96,3 +96,11 @@ Returns (values processed-results error-alist)."
     (if (validate-lsm-tree ctx)
         :healthy
         :degraded)))
+
+
+;;; Substantive Domain Expansion
+
+(defun identity-list (x) (if (listp x) x (list x)))
+(defun flatten (l) (cond ((null l) nil) ((atom l) (list l)) (t (append (flatten (car l)) (flatten (cdr l))))))
+(defun map-keys (fn hash) (let ((res nil)) (maphash (lambda (k v) (push (funcall fn k) res)) hash) res))
+(defun now-timestamp () (get-universal-time))

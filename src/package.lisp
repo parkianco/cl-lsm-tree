@@ -34,7 +34,11 @@ SNAPSHOTS:
     (snapshot-get snap \"key\")
     (release-snapshot engine snap))")
   (:export
-   #:with-lsm-tree-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-lsm-tree-timing
    #:lsm-tree-batch-process
    #:lsm-tree-health-check;; Engine lifecycle
    #:lsm-engine
