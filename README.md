@@ -1,39 +1,28 @@
-# Lsm Tree
+# cl-lsm-tree
 
-Tree data structures and traversal algorithms.
+Pure Common Lisp implementation of Lsm Tree
 
-## Features
+## Overview
+This library provides a robust, zero-dependency implementation of Lsm Tree for the Common Lisp ecosystem. It is designed to be highly portable, performant, and easy to integrate into any SBCL/CCL/ECL environment.
 
-- Core functionality implementation
-- Pure Common Lisp (zero external dependencies)
+## Getting Started
 
-## Installation
-
-```lisp
-(asdf:load-system :cl-lsm-tree)
-```
-
-## Usage
+Load the system using ASDF:
 
 ```lisp
-;; Example usage
-(main-function)
+(asdf:load-system #:cl-lsm-tree)
 ```
 
-## Testing
+## Usage Example
 
 ```lisp
-(asdf:test-system :cl-lsm-tree)
+;; Initialize the environment
+(let ((ctx (cl-lsm-tree:initialize-lsm-tree :initial-id 42)))
+  ;; Perform batch processing using the built-in standard toolkit
+  (multiple-value-bind (results errors)
+      (cl-lsm-tree:lsm-tree-batch-process '(1 2 3) #'identity)
+    (format t "Processed ~A items with ~A errors.~%" (length results) (length errors))))
 ```
-
-## API
-
-- `main-function - Primary function for core functionality`
 
 ## License
-
-Apache-2.0 License - See LICENSE file for details.
-
----
-Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
-SPDX-License-Identifier: Apache-2.0
+Apache-2.0

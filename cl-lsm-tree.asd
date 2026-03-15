@@ -9,8 +9,8 @@
 (asdf:defsystem #:cl-lsm-tree
   :name "cl-lsm-tree"
   :version "0.1.0"
-  :author "Parkian Company LLC"
-  :license "MIT"
+  :author "Park Ian Co"
+  :license "Apache-2.0"
   :description "Log-Structured Merge-tree key-value store in pure Common Lisp"
   :long-description "A production-ready LSM-tree storage engine implementing:
 - MemTable with skip list for in-memory writes
@@ -24,12 +24,10 @@
   :serial t
   :components ((:file "package")
                (:module "src"
-                :serial t
-                :components ((:file "util")
-                             (:file "memtable")
-                             (:file "sstable")
-                             (:file "compaction")
-                             (:file "lsm"))))
+                :components ((:file "package")
+                             (:file "conditions" :depends-on ("package"))
+                             (:file "types" :depends-on ("package"))
+                             (:file "cl-lsm-tree" :depends-on ("package" "conditions" "types"))))))
   :in-order-to ((asdf:test-op (test-op #:cl-lsm-tree/test))))
 
 (asdf:defsystem #:cl-lsm-tree/test
