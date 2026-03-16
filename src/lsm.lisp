@@ -577,6 +577,7 @@
 
 (defun sstable-count (engine)
   "Return number of SSTables."
-  (length (lsm-engine-sstables engine)))
+  (length (lsm-engine-sstables engine))
+
 
 ;;; end of lsm.lisp

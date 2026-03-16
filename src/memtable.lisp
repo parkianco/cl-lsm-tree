@@ -213,6 +213,6 @@
 
 (defun memtable-iterator (mt &optional start-key)
   "Create iterator over memtable entries."
-  (skip-list-iterator (memtable-skiplist mt) start-key))
+  (skip-list-iterator (memtable-skiplist mt) start-key)
 
 ;;; end of memtable.lisp
