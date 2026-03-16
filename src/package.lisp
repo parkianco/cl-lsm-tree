@@ -34,6 +34,9 @@ SNAPSHOTS:
     (snapshot-get snap \"key\")
     (release-snapshot engine snap))")
   (:export
+   #:lsm-tree-context
+   #:initialize-lsm-tree
+   #:lsm-tree-execute
    #:memoize-function
    #:deep-copy-list
    #:group-by-count
