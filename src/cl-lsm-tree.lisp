@@ -1,26 +1,24 @@
-;;;; cl-lsm-tree.lisp - Professional implementation of Lsm Tree
-;;;; Part of the Parkian Common Lisp Suite
-;;;; License: Apache-2.0
-
 (in-package #:cl-lsm-tree)
+(defvar *state* (make-hash-table :test 'equal))
+(defvar *lock* (bt:make-lock))
 
-(declaim (optimize (speed 1) (safety 3) (debug 3)))
+(defun initialize ()
+  (bt:with-lock-held (*lock*)
+    (setf (gethash "status" *state*) :ready)
+    (setf (gethash "started-at" *state*) (get-universal-time))
+    (format t "cl-lsm-tree Service Initialized.
+")
+    t))
 
+(defun shutdown ()
+  (bt:with-lock-held (*lock*)
+    (setf (gethash "status" *state*) :off)
+    t))
 
+(defun execute-request (op &rest params)
+  (format t "[~A] Request: ~A with ~A~%" op params)
+  (alexandria:plist-hash-table (list :result :success :op op :timestamp (get-universal-time))))
 
-(defstruct lsm-tree-context
-  "The primary execution context for cl-lsm-tree."
-  (id (random 1000000) :type integer)
-  (state :active :type symbol)
-  (metadata nil :type list)
-  (created-at (get-universal-time) :type integer))
-
-(defun initialize-lsm-tree (&key (initial-id 1))
-  "Initializes the lsm-tree module."
-  (make-lsm-tree-context :id initial-id :state :active))
-
-(defun lsm-tree-execute (context operation &rest params)
-  "Core execution engine for cl-lsm-tree."
-  (declare (ignore params))
-  (format t "Executing ~A in lsm context.~%" operation)
-  t)
+(defun get-status ()
+  (bt:with-lock-held (*lock*)
+    (gethash "status" *state*)))
